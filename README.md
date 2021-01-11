@@ -1,6 +1,6 @@
 # Simpleicons Plugin for Figma 
 
-<img src="./screenshot.PNG" width="600" />
+<img src="./screenshot.jpg" width="600" />
 
 Simpleicons plugin makes it easy to import icons from [simpleicons.org](https://simpleicons.org)
 
