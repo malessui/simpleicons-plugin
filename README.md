@@ -1,6 +1,6 @@
 # Simpleicons Plugin for Figma 
 
-<img src="./screenshot.png" width="600" />
+<img src="./screenshot.PNG" width="600" />
 
 Creates rectangles (same as the [Webpack sample plugin][webpack]).
 
