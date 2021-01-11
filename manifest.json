@@ -1,0 +1,7 @@
+{
+  "name": "simpleicons",
+  "id": "738168449509241832",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
