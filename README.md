@@ -2,7 +2,7 @@
 
 <img src="./screenshot.PNG" width="600" />
 
-Creates rectangles (same as the [Webpack sample plugin][webpack]).
+Simpleicons plugin makes it easy to import icons from [simpleicons.org](https://simpleicons.org)
 
 This demonstrates:
 
