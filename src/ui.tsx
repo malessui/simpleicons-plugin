@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import Grid from "./components/grid"
 import GridItem from "./components/grid-item"
+import dataJson from "./data"
 import './ui.css'
 
 const App = () => {
@@ -95,21 +96,21 @@ const App = () => {
       {
         data.length && !searchText ? (
           <Grid>
-            {data.map((item, index) => {
-              const className = item.getAttribute("class");
-              const color = item
-                .getAttribute("style")
-                .match(/#[0-9a-f]{6}|#[0-9a-f]{3}/gi);
-              const text = item.querySelector("h2").innerText;
-              const svg = item.querySelector("svg").outerHTML;
+            {dataJson.map((item, index) => {
+              // const className = item.getAttribute("class");
+              // const color = item
+              //   .getAttribute("style")
+              //   .match(/#[0-9a-f]{6}|#[0-9a-f]{3}/gi);
+              // const text = item.querySelector("h2").innerText;
+              // const svg = item.querySelector("svg").outerHTML;
               return (
                 <GridItem
                   key={index}
                   handleClick={handleClick}
-                  color={color}
-                  className={className}
-                  text={text}
-                  svg={svg}
+                  color={item.color}
+                  className={item.className}
+                  text={item.text}
+                  svg={item.svg}
                 />
               );
             })}
