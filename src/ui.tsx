@@ -11,34 +11,37 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [dataSearch, setDataSearch] = useState({})
 
+  // useEffect(() => {
+  //   const loadWeb = async () => {
+      // setLoading(true)
+      // const url = "https://simpleicons.org/";
+      // const response = await fetch(url);
+
+      // const htmlString = await response.text(); // get response text
+      // var parser = new DOMParser();
+      // var htmlDoc = parser.parseFromString(htmlString, "text/html");
+      // const listItem = htmlDoc.getElementsByClassName(
+      //   "grid-item grid-item--light"
+      // );
+      // const listItem = 
+      // setLoading(false)
+      // setData([...listItem]);
+  //   };
+
+  //   loadWeb();
+  // }, [])
+
   useEffect(() => {
-    const loadWeb = async () => {
+    if (searchText) {
       setLoading(true)
-      const url = "https://simpleicons.org/";
-      const response = await fetch(url);
-
-      const htmlString = await response.text(); // get response text
-      var parser = new DOMParser();
-      var htmlDoc = parser.parseFromString(htmlString, "text/html");
-      const listItem = htmlDoc.getElementsByClassName(
-        "grid-item grid-item--light"
-      );
-      setLoading(false)
-      setData([...listItem]);
-    };
-
-    loadWeb();
-  }, [])
-
-  useEffect(() => {
-    setLoading(true)
-    data.filter((item) => {
-      const text = item.querySelector("h2").innerText;
-      if (text.toLowerCase().includes(searchText)) {
-        setLoading(false)
-        setDataSearch({[text]: item, ...dataSearch})
-      }
-    })
+      dataJson.filter((item) => {
+        const text = item.text;
+        if (text.toLowerCase().includes(searchText)) {
+          setLoading(false)
+          setDataSearch({[text]: item, ...dataSearch})
+        }
+      })
+    }
   }, [searchText])
 
   const handleClick = e => {
@@ -53,12 +56,10 @@ const App = () => {
 
   const searchingSVG = () => {
     return Object.keys(dataSearch).map((key, index) => {
-      const className = dataSearch[key].getAttribute("class");
-      const color = dataSearch[key]
-        .getAttribute("style")
-        .match(/#[0-9a-f]{6}|#[0-9a-f]{3}/gi);
-      const text = dataSearch[key].querySelector("h2").innerText;
-      const svg = dataSearch[key].querySelector("svg").outerHTML;
+      const className = dataSearch[key].className;
+      const color = dataSearch[key].color
+      const text = dataSearch[key].text;
+      const svg = dataSearch[key].svg;
       return (
         <GridItem
           key={index}
@@ -94,7 +95,7 @@ const App = () => {
         ) : null
       }
       {
-        data.length && !searchText ? (
+        dataJson.length && !searchText ? (
           <Grid>
             {dataJson.map((item, index) => {
               // const className = item.getAttribute("class");
